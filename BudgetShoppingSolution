@@ -1,0 +1,32 @@
+package recursion;
+
+import java.util.Arrays;
+
+public class BudgetShopping {
+
+	
+	public static void main(String[] args) {
+		int budget = 50;
+		int bundleCosts[] = {2, 12};
+		int bundleQuantities[] = {1, 20};
+	
+		int[] dp = new int[budget + 1];
+		dp[0] = 0;
+		
+		for (int i=1; i <= budget; i++) {
+			int maxQuantityForCurrBudget=0;
+			for (int j=0; j<bundleCosts.length; j++) {
+				int quantity = 0;
+				if (bundleCosts[j] <= i) { // if the budget at this iteration is less than currCost then only we can buy it
+					quantity = bundleQuantities[j] + dp[i - bundleCosts[j]];
+				}
+				if (quantity > maxQuantityForCurrBudget) {
+					 maxQuantityForCurrBudget = quantity;
+				}
+			}
+			dp[i] = maxQuantityForCurrBudget;
+		}
+		
+		System.out.println(dp[budget]);
+		System.out.println(Arrays.toString(dp));
+	}
