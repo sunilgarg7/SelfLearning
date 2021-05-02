@@ -26,7 +26,8 @@ public class Sudoku {
 		subgroup.put("63", new boolean[board.length + 1]);
 		subgroup.put("66", new boolean[board.length + 1]);
 		
-		// we should traverse our given sudoku board 
+		// we should traverse our given sudoku board once so that we can put those value inside our rowarr, colsArr and subgroup in-memory maps, to reduce 
+		// the number of invalid cases in those given input.
 		sudoku(board, 0, 0, rowarr, colsArr, subgroup);
 		
 	}
